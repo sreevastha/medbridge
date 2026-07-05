@@ -14,7 +14,7 @@ import app.models.business
 from app.models.business import TestCatalogue, Transaction, Patient, StaffMember
 from app.models.user import Lab
 
-from app.api.routers import health, auth, admin, catalogue, staff
+from app.api.routers import health, auth, admin, catalogue, staff, patients, orders, reports
 
 
 @asynccontextmanager
@@ -81,6 +81,9 @@ app.include_router(auth.router)
 app.include_router(admin.router)
 app.include_router(catalogue.router)
 app.include_router(staff.router)
+app.include_router(patients.router)
+app.include_router(orders.router)
+app.include_router(reports.router)
 
 
 @app.get("/")

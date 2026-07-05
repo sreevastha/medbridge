@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import PatientRegistration from './pages/PatientRegistration';
 import LabOnboarding from './pages/LabOnboarding';
 import AdminDashboard from './pages/AdminDashboard';
+import CreateOrder from './pages/CreateOrder';
+import Reports from './pages/Reports';
 
 // Optional: A small debug component just to keep the health check visible if needed
 const HealthCheck = () => {
@@ -34,6 +36,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/patients/register" element={<PatientRegistration />} />
+        <Route path="/orders/create" element={<CreateOrder />} />
+        <Route path="/reports/review" element={<Reports />} />
         <Route path="/health" element={<HealthCheck />} />
       </Routes>
     </Router>

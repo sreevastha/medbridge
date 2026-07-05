@@ -30,6 +30,9 @@ class Patient(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     phone = Column(String, nullable=True)
+    age = Column(Integer, nullable=True)
+    gender = Column(String, nullable=True)
+    abha_id = Column(String, nullable=True)
     lab_id = Column(Integer, ForeignKey("labs.id"))
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
