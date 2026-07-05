@@ -1,0 +1,13 @@
+{
+  "name": "medbridge-root",
+  "private": true,
+  "workspaces": [
+    "layer1-frontend"
+  ],
+  "scripts": {
+    "dev": "npm --prefix layer1-frontend run dev",
+    "build": "npm --prefix layer1-frontend run build",
+    "preview": "npm --prefix layer1-frontend run preview",
+    "test": "npm --prefix layer1-frontend run test"
+  }
+}
