@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mb-primary:#1456b8; --mb-primary-hover:#0e3f8f; --mb-primary-dark:#0e3a7a;
+    --mb-primary-bright:#2b7cd3; --mb-primary-tint:#eaf1fb; --mb-primary-tint-2:#dbe7f8;
+    --mb-teal:#0d9488; --mb-teal-tint:#e2f5f2;
+    --mb-ink:#15233b; --mb-text:#26344b; --mb-text-2:#5b6b82; --mb-text-3:#8a97a8;
+    --mb-border:#e2e8f0; --mb-border-strong:#cbd5e1;
+    --mb-surface:#ffffff; --mb-bg:#f6f8fb; --mb-bg-subtle:#eef2f7;
+    --mb-success:#1f8a5b; --mb-success-tint:#e6f4ee;
+    --mb-warning:#b9770b; --mb-warning-tint:#fbf0dd;
+    --mb-danger:#c5392b; --mb-danger-tint:#fbeae8;
+    --mb-r-md:10px; --mb-r-lg:14px;
+    --mb-sh-card:0 1px 2px rgba(21,35,59,.04), 0 1px 3px rgba(21,35,59,.06);
+    --mb-font:'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mb-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+</style>
+</helmet>
+<div style="width:1440px; height:900px; display:flex; font-family:var(--mb-font); background:var(--mb-bg); color:var(--mb-text); -webkit-font-smoothing:antialiased; overflow:hidden;">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside style="width:256px; flex:none; background:var(--mb-surface); border-right:1px solid var(--mb-border); display:flex; flex-direction:column; padding:22px 16px;">
+    <div style="display:flex; align-items:center; gap:12px; padding:4px 8px 24px;">
+      <div style="width:40px; height:40px; border-radius:11px; background:var(--mb-primary); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(20,86,184,.26);">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M4 15c2.6 0 2.6-6 5.2-6S11.8 15 14.4 15s2.6-6 5.2-6" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><circle cx="12" cy="5.5" r="1.6" fill="#fff"/></svg>
+      </div>
+      <span style="font-size:20px; font-weight:700; color:var(--mb-ink); letter-spacing:-.01em;">MedBridge</span>
+    </div>
+    <nav style="display:flex; flex-direction:column; gap:4px;">
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/><rect x="14" y="3" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/><rect x="3" y="14" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/><rect x="14" y="14" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/></svg>Dashboard
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="#5b6b82" stroke-width="1.9"/><path d="M5 19c0-3.5 3.2-5.4 7-5.4s7 1.9 7 5.4" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Patients
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; background:var(--mb-primary-tint); color:var(--mb-primary-dark); font-size:15px; font-weight:600; text-decoration:none; position:relative;">
+        <span style="position:absolute; left:-16px; top:11px; bottom:11px; width:3px; border-radius:0 3px 3px 0; background:var(--mb-primary);"></span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 6l1 13h12l1-13M5 6l-1-2.5" stroke="#0e3a7a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 10.5v5M14.5 10.5v5" stroke="#0e3a7a" stroke-width="1.9" stroke-linecap="round"/></svg>Orders
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 4h7l4 4v12H7z" stroke="#5b6b82" stroke-width="1.9" stroke-linejoin="round"/><path d="M13 4v5h5" stroke="#5b6b82" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.5 13h5M9.5 16h3" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Reports
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6l7-3z" stroke="#5b6b82" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.2" stroke="#5b6b82" stroke-width="1.9"/><path d="M8.6 15.4c.6-1.5 2-2.1 3.4-2.1s2.8.6 3.4 2.1" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Admin
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.2" stroke="#5b6b82" stroke-width="1.9"/><path d="M12 2.5v2.6M12 18.9v2.6M21.5 12h-2.6M5.1 12H2.5M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8M18.7 18.7l-1.8-1.8M7.1 7.1L5.3 5.3" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Settings
+      </a>
+    </nav>
+    <div style="margin-top:auto; padding:14px 12px; border-top:1px solid var(--mb-border); display:flex; align-items:center; gap:10px;">
+      <span style="width:8px; height:8px; border-radius:50%; background:var(--mb-success); box-shadow:0 0 0 3px var(--mb-success-tint);"></span>
+      <div style="font-size:13px; color:var(--mb-text-2);">ABDM connected</div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
+    <!-- Top bar -->
+    <header style="height:68px; flex:none; background:var(--mb-surface); border-bottom:1px solid var(--mb-border); display:flex; align-items:center; justify-content:space-between; padding:0 28px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:34px; height:34px; border-radius:9px; background:var(--mb-teal-tint); display:flex; align-items:center; justify-content:center;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M9 3h6v5l4 8.5A2.5 2.5 0 0 1 16.7 20H7.3A2.5 2.5 0 0 1 5 16.5L9 8V3z" stroke="#0a6b62" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 3h8" stroke="#0a6b62" stroke-width="1.8" stroke-linecap="round"/><path d="M7.5 13h9" stroke="#0a6b62" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div style="font-size:16px; font-weight:700; color:var(--mb-ink); line-height:1.1;">Sunrise Diagnostics</div>
+          <div style="font-size:12.5px; color:var(--mb-text-3); margin-top:2px;">Pune · HFR ID 4521-8890</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px;">
+        <div style="width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--mb-text-2); cursor:pointer;">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 4a5 5 0 0 0-5 5v3l-1.6 3h13.2L17 12V9a5 5 0 0 0-5-5z" stroke="#5b6b82" stroke-width="1.9" stroke-linejoin="round"/><path d="M10 19a2 2 0 0 0 4 0" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>
+        </div>
+        <div style="width:1px; height:28px; background:var(--mb-border);"></div>
+        <div style="display:flex; align-items:center; gap:11px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:var(--mb-primary-tint); color:var(--mb-primary-dark); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700;">PK</div>
+          <div style="line-height:1.2;">
+            <div style="font-size:14px; font-weight:600; color:var(--mb-ink);">Priya Kulkarni</div>
+            <div style="font-size:12.5px; color:var(--mb-text-3);">Front desk</div>
+          </div>
+        </div>
+        <div style="height:40px; padding:0 16px; border:1.5px solid var(--mb-border-strong); border-radius:10px; display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:var(--mb-text-2); cursor:pointer;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M15 5V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12h10m0 0l-3-3m3 3l-3 3" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Logout
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main style="flex:1; padding:30px 36px; overflow:hidden; min-height:0; display:flex; flex-direction:column;">
+
+      <!-- Breadcrumb + title -->
+      <div style="margin-bottom:18px;">
+        <div style="font-size:13.5px; color:var(--mb-text-3); margin-bottom:8px; display:flex; align-items:center; gap:7px;"><span>Orders</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="#8a97a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:var(--mb-text-2); font-weight:600;">Create order</span></div>
+        <h1 style="font-size:26px; font-weight:700; color:var(--mb-ink); margin:0; letter-spacing:-.01em;">Create order</h1>
+      </div>
+
+      <!-- Selected patient banner -->
+      <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); padding:16px 22px; margin-bottom:20px; display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="width:48px; height:48px; border-radius:50%; background:var(--mb-primary-tint); color:var(--mb-primary-dark); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700;">AD</div>
+          <div>
+            <div style="display:flex; align-items:center; gap:10px;"><span style="font-size:17px; font-weight:600; color:var(--mb-ink);">Anjali Deshpande</span><span style="display:inline-flex; align-items:center; gap:5px; height:24px; padding:0 10px; border-radius:999px; background:#fff; border:1.5px solid var(--mb-teal); color:#0a6b62; font-size:12px; font-weight:600;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6l7-3z" stroke="#0d9488" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>ABHA linked</span></div>
+            <div style="font-size:13.5px; color:var(--mb-text-3); margin-top:3px;">Female · 34 · <span style="font-family:var(--mb-mono);">#LB-2046</span> · <span style="font-family:var(--mb-mono);">91-2345-…-0012</span></div>
+          </div>
+        </div>
+        <a href="#" style="font-size:14px; font-weight:600; color:var(--mb-primary); text-decoration:none;">Change patient</a>
+      </div>
+
+      <!-- Two columns -->
+      <div style="flex:1; display:grid; grid-template-columns:1fr 400px; gap:24px; min-height:0;">
+
+        <!-- LEFT: catalog -->
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); display:flex; flex-direction:column; min-height:0; overflow:hidden;">
+          <div style="padding:20px 22px 16px; border-bottom:1px solid var(--mb-border);">
+            <div style="height:48px; background:var(--mb-bg); border:1.5px solid var(--mb-border-strong); border-radius:10px; padding:0 14px; display:flex; align-items:center; gap:11px;">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="#8a97a8" stroke-width="1.9"/><path d="M16 16l4 4" stroke="#8a97a8" stroke-width="1.9" stroke-linecap="round"/></svg>
+              <span style="font-size:15px; color:var(--mb-text-3);">Search tests &amp; panels — e.g. CBC, lipid, thyroid</span>
+            </div>
+            <div style="display:flex; gap:9px; margin-top:14px;">
+              <div style="height:30px; padding:0 14px; border-radius:999px; background:var(--mb-primary-tint); color:var(--mb-primary-dark); font-size:13px; font-weight:600; display:flex; align-items:center;">Popular</div>
+              <div style="height:30px; padding:0 14px; border-radius:999px; background:var(--mb-bg); border:1px solid var(--mb-border); color:var(--mb-text-2); font-size:13px; font-weight:500; display:flex; align-items:center;">Haematology</div>
+              <div style="height:30px; padding:0 14px; border-radius:999px; background:var(--mb-bg); border:1px solid var(--mb-border); color:var(--mb-text-2); font-size:13px; font-weight:500; display:flex; align-items:center;">Biochemistry</div>
+              <div style="height:30px; padding:0 14px; border-radius:999px; background:var(--mb-bg); border:1px solid var(--mb-border); color:var(--mb-text-2); font-size:13px; font-weight:500; display:flex; align-items:center;">Hormones</div>
+            </div>
+          </div>
+          <div style="flex:1; overflow:auto; padding:8px 0;">
+            <sc-for list="{{ catalog }}" as="t" hint-placeholder-count="7">
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 22px; border-bottom:1px solid var(--mb-border);">
+                <div style="display:flex; align-items:center; gap:14px;">
+                  <div style="width:40px; height:40px; border-radius:10px; background:var(--mb-bg-subtle); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; font-family:var(--mb-mono); color:var(--mb-text-2);">{{ t.code }}</div>
+                  <div>
+                    <div style="font-size:15.5px; font-weight:600; color:var(--mb-ink);">{{ t.name }}</div>
+                    <div style="font-size:13px; color:var(--mb-text-3); margin-top:2px;">{{ t.meta }}</div>
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:16px;">
+                  <div style="font-size:15px; font-weight:600; font-family:var(--mb-mono); color:var(--mb-text);">{{ t.priceLabel }}</div>
+                  {{ t.button }}
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- RIGHT: summary -->
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); display:flex; flex-direction:column; min-height:0; overflow:hidden;">
+          <div style="padding:20px 22px 14px; border-bottom:1px solid var(--mb-border); display:flex; align-items:center; justify-content:space-between;">
+            <h2 style="font-size:17px; font-weight:600; color:var(--mb-ink); margin:0;">Order summary</h2>
+            <span style="display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:24px; padding:0 8px; border-radius:999px; background:var(--mb-primary); color:#fff; font-size:13px; font-weight:600;">{{ count }}</span>
+          </div>
+
+          <div style="flex:1; overflow:auto;">
+            <sc-for list="{{ selected }}" as="s" hint-placeholder-count="3">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; padding:15px 22px; border-bottom:1px solid var(--mb-border);">
+                <div style="padding-right:12px;">
+                  <div style="font-size:14.5px; font-weight:600; color:var(--mb-ink);">{{ s.name }}</div>
+                  <div style="font-size:12.5px; color:var(--mb-text-3); margin-top:2px;">{{ s.meta }}</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px; flex:none;">
+                  <span style="font-size:14.5px; font-weight:600; font-family:var(--mb-mono); color:var(--mb-text);">{{ s.priceLabel }}</span>
+                  <button onclick="{{ s.remove }}" style="width:26px; height:26px; border-radius:7px; border:none; background:var(--mb-bg-subtle); color:var(--mb-text-3); cursor:pointer; display:flex; align-items:center; justify-content:center;" onmouseover="this.style.background='var(--mb-danger-tint)'; this.style.color='#c5392b'" onmouseout="this.style.background='var(--mb-bg-subtle)'; this.style.color='var(--mb-text-3)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- totals + action -->
+          <div style="border-top:1px solid var(--mb-border); padding:18px 22px 20px; background:var(--mb-bg);">
+            <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--mb-text-2); margin-bottom:9px;"><span>Subtotal</span><span style="font-family:var(--mb-mono);">{{ subtotalLabel }}</span></div>
+            <div style="display:flex; justify-content:space-between; font-size:14px; color:var(--mb-text-2); margin-bottom:13px;"><span>GST (incl.)</span><span style="font-family:var(--mb-mono);">{{ gstLabel }}</span></div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; padding-top:13px; border-top:1px dashed var(--mb-border-strong); margin-bottom:18px;"><span style="font-size:16px; font-weight:700; color:var(--mb-ink);">Total</span><span style="font-size:24px; font-weight:700; color:var(--mb-ink); font-family:var(--mb-mono);">{{ totalLabel }}</span></div>
+            <button style="width:100%; height:52px; background:var(--mb-primary); color:#fff; border:none; border-radius:11px; font-family:var(--mb-font); font-size:16px; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(20,86,184,.26); display:flex; align-items:center; justify-content:center; gap:10px;" onmouseover="this.style.background='var(--mb-primary-hover)'" onmouseout="this.style.background='var(--mb-primary)'">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 6.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Create order
+            </button>
+            <div style="text-align:center; font-size:13px; color:var(--mb-text-3); margin-top:12px;">Next: collect sample &amp; print label.</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { picked: { cbc:true, lipid:true, hba1c:true } };
+
+  rupee(n){ return '₹' + n.toLocaleString('en-IN'); }
+
+  addButton(id, added){
+    if(added){
+      return React.createElement('div',{style:{display:'inline-flex',alignItems:'center',gap:6,height:38,padding:'0 16px',borderRadius:9,background:'#e6f4ee',color:'#136b44',fontSize:14,fontWeight:600}},
+        React.createElement('svg',{width:15,height:15,viewBox:'0 0 24 24',fill:'none'},React.createElement('path',{d:'M5 12.5l4.5 4.5L19 6.5',stroke:'#1f8a5b',strokeWidth:2.6,strokeLinecap:'round',strokeLinejoin:'round'})),'Added');
+    }
+    return React.createElement('button',{
+      onClick:()=>this.toggle(id),
+      style:{display:'inline-flex',alignItems:'center',gap:6,height:38,padding:'0 16px',borderRadius:9,background:'#fff',border:'1.5px solid #cbd5e1',color:'#1456b8',fontFamily:'var(--mb-font)',fontSize:14,fontWeight:600,cursor:'pointer'}
+    }, React.createElement('svg',{width:15,height:15,viewBox:'0 0 24 24',fill:'none'},React.createElement('path',{d:'M12 5v14M5 12h14',stroke:'#1456b8',strokeWidth:2.2,strokeLinecap:'round'})),'Add');
+  }
+
+  toggle(id){
+    this.setState(s=>{ const p={...s.picked}; if(p[id]) delete p[id]; else p[id]=true; return {picked:p}; });
+  }
+
+  renderVals(){
+    const tests = [
+      {id:'cbc',   code:'CBC',  name:'Complete Blood Count', meta:'Haematology · 18 parameters · same day', price:350},
+      {id:'lipid', code:'LIP',  name:'Lipid Profile',        meta:'Biochemistry · fasting · same day',       price:600},
+      {id:'hba1c', code:'A1c',  name:'HbA1c',                meta:'Diabetes monitoring · same day',           price:450},
+      {id:'tsh',   code:'THY',  name:'Thyroid Profile (T3 T4 TSH)', meta:'Hormones · next day',              price:550},
+      {id:'lft',   code:'LFT',  name:'Liver Function Test',  meta:'Biochemistry · 11 parameters · same day', price:700},
+      {id:'kft',   code:'KFT',  name:'Kidney Function Test', meta:'Biochemistry · same day',                 price:650},
+      {id:'vitd',  code:'VitD', name:'Vitamin D, 25-Hydroxy',meta:'Special · 2 days',                        price:1400},
+      {id:'urine', code:'URN',  name:'Urine Routine & Microscopy', meta:'Pathology · same day',             price:200},
+    ];
+    const picked = this.state.picked;
+
+    const catalog = tests.map(t=>({
+      ...t, priceLabel: this.rupee(t.price), button: this.addButton(t.id, !!picked[t.id])
+    }));
+
+    const selected = tests.filter(t=>picked[t.id]).map(t=>({
+      ...t, priceLabel: this.rupee(t.price), remove: ()=>this.toggle(t.id)
+    }));
+
+    const subtotal = selected.reduce((a,t)=>a+t.price,0);
+    const gst = Math.round(subtotal*0.05);
+
+    return {
+      catalog, selected,
+      count: selected.length,
+      subtotalLabel: this.rupee(subtotal - gst),
+      gstLabel: this.rupee(gst),
+      totalLabel: this.rupee(subtotal),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mb-primary:#1456b8; --mb-primary-hover:#0e3f8f; --mb-primary-dark:#0e3a7a;
+    --mb-primary-bright:#2b7cd3; --mb-primary-tint:#eaf1fb; --mb-primary-tint-2:#dbe7f8;
+    --mb-teal:#0d9488; --mb-teal-tint:#e2f5f2;
+    --mb-ink:#15233b; --mb-text:#26344b; --mb-text-2:#5b6b82; --mb-text-3:#8a97a8;
+    --mb-border:#e2e8f0; --mb-border-strong:#cbd5e1;
+    --mb-surface:#ffffff; --mb-bg:#f6f8fb; --mb-bg-subtle:#eef2f7;
+    --mb-success:#1f8a5b; --mb-success-tint:#e6f4ee;
+    --mb-warning:#b9770b; --mb-warning-tint:#fbf0dd;
+    --mb-danger:#c5392b; --mb-danger-tint:#fbeae8;
+    --mb-r-md:10px; --mb-r-lg:14px;
+    --mb-sh-card:0 1px 2px rgba(21,35,59,.04), 0 1px 3px rgba(21,35,59,.06);
+    --mb-font:'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mb-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+</style>
+</helmet>
+<div style="width:1440px; height:900px; display:flex; font-family:var(--mb-font); background:var(--mb-bg); color:var(--mb-text); -webkit-font-smoothing:antialiased; overflow:hidden;">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside style="width:256px; flex:none; background:var(--mb-surface); border-right:1px solid var(--mb-border); display:flex; flex-direction:column; padding:22px 16px;">
+    <div style="display:flex; align-items:center; gap:12px; padding:4px 8px 24px;">
+      <div style="width:40px; height:40px; border-radius:11px; background:var(--mb-primary); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(20,86,184,.26);">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M4 15c2.6 0 2.6-6 5.2-6S11.8 15 14.4 15s2.6-6 5.2-6" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><circle cx="12" cy="5.5" r="1.6" fill="#fff"/></svg>
+      </div>
+      <span style="font-size:20px; font-weight:700; color:var(--mb-ink); letter-spacing:-.01em;">MedBridge</span>
+    </div>
+    <nav style="display:flex; flex-direction:column; gap:4px;">
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/><rect x="14" y="3" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/><rect x="3" y="14" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/><rect x="14" y="14" width="7" height="7" rx="1.6" stroke="#5b6b82" stroke-width="1.9"/></svg>Dashboard
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="#5b6b82" stroke-width="1.9"/><path d="M5 19c0-3.5 3.2-5.4 7-5.4s7 1.9 7 5.4" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Patients
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 6l1 13h12l1-13M5 6l-1-2.5" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 10.5v5M14.5 10.5v5" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Orders
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 4h7l4 4v12H7z" stroke="#5b6b82" stroke-width="1.9" stroke-linejoin="round"/><path d="M13 4v5h5" stroke="#5b6b82" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.5 13h5M9.5 16h3" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Reports
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; background:var(--mb-primary-tint); color:var(--mb-primary-dark); font-size:15px; font-weight:600; text-decoration:none; position:relative;">
+        <span style="position:absolute; left:-16px; top:11px; bottom:11px; width:3px; border-radius:0 3px 3px 0; background:var(--mb-primary);"></span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6l7-3z" stroke="#0e3a7a" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.2" stroke="#0e3a7a" stroke-width="1.9"/><path d="M8.6 15.4c.6-1.5 2-2.1 3.4-2.1s2.8.6 3.4 2.1" stroke="#0e3a7a" stroke-width="1.9" stroke-linecap="round"/></svg>Admin
+      </a>
+      <a href="#" style="display:flex; align-items:center; gap:13px; height:46px; padding:0 14px; border-radius:10px; color:var(--mb-text-2); font-size:15px; font-weight:500; text-decoration:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.2" stroke="#5b6b82" stroke-width="1.9"/><path d="M12 2.5v2.6M12 18.9v2.6M21.5 12h-2.6M5.1 12H2.5M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8M18.7 18.7l-1.8-1.8M7.1 7.1L5.3 5.3" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>Settings
+      </a>
+    </nav>
+    <div style="margin-top:auto; padding:14px 12px; border-top:1px solid var(--mb-border); display:flex; align-items:center; gap:10px;">
+      <span style="width:8px; height:8px; border-radius:50%; background:var(--mb-success); box-shadow:0 0 0 3px var(--mb-success-tint);"></span>
+      <div style="font-size:13px; color:var(--mb-text-2);">ABDM connected</div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
+    <!-- Top bar -->
+    <header style="height:68px; flex:none; background:var(--mb-surface); border-bottom:1px solid var(--mb-border); display:flex; align-items:center; justify-content:space-between; padding:0 28px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:34px; height:34px; border-radius:9px; background:var(--mb-teal-tint); display:flex; align-items:center; justify-content:center;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M9 3h6v5l4 8.5A2.5 2.5 0 0 1 16.7 20H7.3A2.5 2.5 0 0 1 5 16.5L9 8V3z" stroke="#0a6b62" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 3h8" stroke="#0a6b62" stroke-width="1.8" stroke-linecap="round"/><path d="M7.5 13h9" stroke="#0a6b62" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div style="font-size:16px; font-weight:700; color:var(--mb-ink); line-height:1.1;">Sunrise Diagnostics</div>
+          <div style="font-size:12.5px; color:var(--mb-text-3); margin-top:2px;">Pune · HFR ID 4521-8890</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px;">
+        <div style="width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--mb-text-2); cursor:pointer;">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 4a5 5 0 0 0-5 5v3l-1.6 3h13.2L17 12V9a5 5 0 0 0-5-5z" stroke="#5b6b82" stroke-width="1.9" stroke-linejoin="round"/><path d="M10 19a2 2 0 0 0 4 0" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round"/></svg>
+        </div>
+        <div style="width:1px; height:28px; background:var(--mb-border);"></div>
+        <div style="display:flex; align-items:center; gap:11px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:var(--mb-primary); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700;">VM</div>
+          <div style="line-height:1.2;">
+            <div style="font-size:14px; font-weight:600; color:var(--mb-ink);">Vikram Mehta</div>
+            <div style="font-size:12.5px; color:var(--mb-text-3);">Lab owner</div>
+          </div>
+        </div>
+        <div style="height:40px; padding:0 16px; border:1.5px solid var(--mb-border-strong); border-radius:10px; display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:var(--mb-text-2); cursor:pointer;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M15 5V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12h10m0 0l-3-3m3 3l-3 3" stroke="#5b6b82" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Logout
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main style="flex:1; padding:28px 32px; overflow:auto; min-height:0;">
+
+      <!-- header row -->
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:22px;">
+        <div>
+          <h1 style="font-size:25px; font-weight:700; color:var(--mb-ink); margin:0 0 5px; letter-spacing:-.01em;">Business overview</h1>
+          <p style="font-size:14.5px; color:var(--mb-text-2); margin:0;">ABDM activity and incentive earnings for your lab.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="height:40px; padding:0 16px; background:var(--mb-surface); border:1.5px solid var(--mb-border-strong); border-radius:10px; display:flex; align-items:center; gap:9px; font-size:14px; font-weight:600; color:var(--mb-text); cursor:pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2.2" stroke="#5b6b82" stroke-width="1.8"/><path d="M4 9h16M8 3v3M16 3v3" stroke="#5b6b82" stroke-width="1.8" stroke-linecap="round"/></svg>June 2026<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#5b6b82" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="height:40px; padding:0 16px; background:var(--mb-primary); color:#fff; border-radius:10px; display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(20,86,184,.2);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3v11m0 0l-4-4m4 4l4-4" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 18.5h14" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg>Export report
+          </div>
+        </div>
+      </div>
+
+      <!-- summary cards -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:22px;">
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); padding:20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;"><span style="font-size:13px; font-weight:600; color:var(--mb-text-2);">Reports shared this month</span><div style="width:34px; height:34px; border-radius:9px; background:var(--mb-primary-tint); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6l7-3z" stroke="#1456b8" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#1456b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div style="font-size:34px; font-weight:700; color:var(--mb-ink); line-height:1; font-family:var(--mb-mono);">1,284</div>
+          <div style="font-size:12.5px; color:var(--mb-success); margin-top:9px; display:flex; align-items:center; gap:5px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 14l5-5 4 4 5-6" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>+18% vs May</div>
+        </div>
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); padding:20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;"><span style="font-size:13px; font-weight:600; color:var(--mb-text-2);">Incentive-eligible</span><div style="width:34px; height:34px; border-radius:9px; background:var(--mb-teal-tint); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 6.5" stroke="#0d9488" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div style="font-size:34px; font-weight:700; color:var(--mb-ink); line-height:1; font-family:var(--mb-mono);">1,150</div>
+          <div style="font-size:12.5px; color:var(--mb-text-3); margin-top:9px;">90% of shared reports qualify</div>
+        </div>
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); padding:20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;"><span style="font-size:13px; font-weight:600; color:var(--mb-text-2);">Estimated earnings</span><div style="width:34px; height:34px; border-radius:9px; background:var(--mb-success-tint); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 6h9M7 10h9M14 6c0 4-3 5-6 5l5 7" stroke="#1f8a5b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div style="font-size:34px; font-weight:700; color:var(--mb-ink); line-height:1; font-family:var(--mb-mono);">₹28,750</div>
+          <div style="font-size:12.5px; color:var(--mb-text-3); margin-top:9px;">@ ₹25 per eligible txn</div>
+        </div>
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); padding:20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;"><span style="font-size:13px; font-weight:600; color:var(--mb-text-2);">Pending payout</span><div style="width:34px; height:34px; border-radius:9px; background:var(--mb-warning-tint); display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.2" stroke="#b9770b" stroke-width="1.9"/><path d="M12 8v4.4l3 1.8" stroke="#b9770b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div style="font-size:34px; font-weight:700; color:var(--mb-ink); line-height:1; font-family:var(--mb-mono);">₹9,200</div>
+          <div style="font-size:12.5px; color:var(--mb-warning); margin-top:9px;">Next cycle · 05 Jul 2026</div>
+        </div>
+      </div>
+
+      <!-- chart + breakdown -->
+      <div style="display:grid; grid-template-columns:1fr 320px; gap:16px; margin-bottom:22px;">
+        <!-- chart -->
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); padding:22px 24px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+            <div><h2 style="font-size:16px; font-weight:600; color:var(--mb-ink); margin:0;">Reports shared over time</h2><div style="font-size:12.5px; color:var(--mb-text-3); margin-top:3px;">Daily, June 2026</div></div>
+            <div style="display:flex; align-items:center; gap:16px;">
+              <span style="display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--mb-text-2);"><span style="width:10px; height:10px; border-radius:3px; background:var(--mb-primary);"></span>Shared</span>
+              <span style="display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--mb-text-2);"><span style="width:10px; height:10px; border-radius:3px; background:var(--mb-primary-tint-2);"></span>Incentive-eligible</span>
+            </div>
+          </div>
+          {{ chart }}
+        </div>
+        <!-- test mix breakdown -->
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); padding:22px 24px;">
+          <h2 style="font-size:16px; font-weight:600; color:var(--mb-ink); margin:0 0 18px;">Top tests this month</h2>
+          <sc-for list="{{ mix }}" as="m" hint-placeholder-count="5">
+            <div style="margin-bottom:15px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="font-size:13.5px; color:var(--mb-text); font-weight:500;">{{ m.name }}</span><span style="font-size:13px; font-family:var(--mb-mono); color:var(--mb-text-2);">{{ m.count }}</span></div>
+              <div style="height:8px; background:var(--mb-bg-subtle); border-radius:999px; overflow:hidden;"><div style="height:100%; width:{{ m.pct }}; background:{{ m.color }}; border-radius:999px;"></div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- transactions table -->
+      <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:14px; box-shadow:var(--mb-sh-card); overflow:hidden;">
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:18px 22px 14px;">
+          <h2 style="font-size:16px; font-weight:600; color:var(--mb-ink); margin:0;">Recent transactions</h2>
+          <a href="#" style="font-size:13.5px; font-weight:600; color:var(--mb-primary); text-decoration:none; display:flex; align-items:center; gap:5px;">View all <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M8 5l7 7-7 7" stroke="#1456b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div style="display:grid; grid-template-columns:1.1fr 1.6fr 1.6fr 1.2fr 1fr 1fr; padding:10px 22px; background:var(--mb-bg-subtle); border-top:1px solid var(--mb-border); border-bottom:1px solid var(--mb-border); font-size:11.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--mb-text-2);">
+          <div>Txn ID</div><div>Patient</div><div>Test</div><div>Shared at</div><div style="text-align:right;">Incentive</div><div style="text-align:right;">Status</div>
+        </div>
+        <sc-for list="{{ txns }}" as="t" hint-placeholder-count="8">
+          <div style="display:grid; grid-template-columns:1.1fr 1.6fr 1.6fr 1.2fr 1fr 1fr; padding:11px 22px; border-bottom:1px solid var(--mb-border); align-items:center;">
+            <div style="font-size:13px; font-family:var(--mb-mono); color:var(--mb-text-2);">{{ t.id }}</div>
+            <div style="font-size:14px; color:var(--mb-ink); font-weight:500;">{{ t.patient }}</div>
+            <div style="font-size:13.5px; color:var(--mb-text);">{{ t.test }}</div>
+            <div style="font-size:13px; font-family:var(--mb-mono); color:var(--mb-text-2);">{{ t.time }}</div>
+            <div style="text-align:right; font-size:13.5px; font-family:var(--mb-mono); font-weight:600; color:{{ t.incColor }};">{{ t.inc }}</div>
+            <div style="text-align:right;">{{ t.badge }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  buildChart(){
+    const data = [
+      32,40,28,46,52,38,18, 44,58,49,62,55,41,22,
+      50,64,57,68,60,46,26, 58,72,65,78,70,52,30, 66,80
+    ];
+    const W=720, H=240, padL=34, padB=26, padT=10;
+    const innerW = W-padL-8, innerH = H-padB-padT;
+    const max = 90;
+    const n = data.length;
+    const gap = 4;
+    const bw = (innerW/n) - gap;
+    const els = [];
+    // gridlines
+    [0,30,60,90].forEach(g=>{
+      const y = padT + innerH - (g/max)*innerH;
+      els.push(React.createElement('line',{key:'g'+g, x1:padL, y1:y, x2:W-8, y2:y, stroke:'#eef2f7', strokeWidth:1}));
+      els.push(React.createElement('text',{key:'gt'+g, x:padL-8, y:y+4, textAnchor:'end', fontSize:11, fontFamily:'var(--mb-mono)', fill:'#8a97a8'}, g));
+    });
+    data.forEach((v,i)=>{
+      const x = padL + i*(bw+gap);
+      const h = (v/max)*innerH;
+      const y = padT + innerH - h;
+      const elig = Math.round(h*0.88);
+      // total bar (light)
+      els.push(React.createElement('rect',{key:'b'+i, x, y, width:bw, height:h, rx:3, fill:'#dbe7f8'}));
+      // eligible (dark) overlay from bottom
+      els.push(React.createElement('rect',{key:'e'+i, x, y:padT+innerH-elig, width:bw, height:elig, rx:3, fill:'#1456b8'}));
+    });
+    // x labels (weekly)
+    ['Jun 1','Jun 8','Jun 15','Jun 22','Jun 29'].forEach((lab,i)=>{
+      const x = padL + (i*7)*(bw+gap);
+      els.push(React.createElement('text',{key:'x'+i, x:x, y:H-8, fontSize:11, fontFamily:'var(--mb-mono)', fill:'#8a97a8'}, lab));
+    });
+    return React.createElement('svg',{viewBox:'0 0 '+W+' '+H, width:'100%', height:240, style:{display:'block',marginTop:8}}, els);
+  }
+
+  badge(kind){
+    const map = {
+      shared:['#e6f4ee','#136b44','Shared'],
+      pending:['#fbf0dd','#8a5908','Pending'],
+      failed:['#fbeae8','#9d2c20','Failed'],
+    };
+    const [bg,fg,label]=map[kind];
+    return React.createElement('span',{style:{display:'inline-flex',alignItems:'center',gap:6,height:24,padding:'0 10px',borderRadius:999,background:bg,color:fg,fontSize:12.5,fontWeight:600}},
+      React.createElement('span',{style:{width:6,height:6,borderRadius:'50%',background:fg}}), label);
+  }
+
+  renderVals(){
+    const mix = [
+      {name:'Complete Blood Count', count:312, pct:'92%', color:'var(--mb-primary)'},
+      {name:'Lipid Profile', count:228, pct:'68%', color:'var(--mb-primary-bright)'},
+      {name:'HbA1c', count:196, pct:'58%', color:'var(--mb-teal)'},
+      {name:'Thyroid Profile', count:174, pct:'52%', color:'#5b8fd6'},
+      {name:'Liver Function Test', count:131, pct:'39%', color:'#9ab8e3'},
+    ];
+    const rawTxns = [
+      {id:'TXN-9041', patient:'Anjali Deshpande', test:'Complete Blood Count', time:'30 Jun · 11:24', inc:'₹25', status:'shared'},
+      {id:'TXN-9040', patient:'Anil Sharma', test:'Lipid Profile', time:'30 Jun · 11:02', inc:'₹25', status:'shared'},
+      {id:'TXN-9039', patient:'Meera Iyer', test:'HbA1c', time:'30 Jun · 10:46', inc:'₹25', status:'shared'},
+      {id:'TXN-9038', patient:'Rahul Verma', test:'Thyroid Profile (T3 T4 TSH)', time:'30 Jun · 10:18', inc:'—', status:'failed'},
+      {id:'TXN-9037', patient:'Sanjay Gupta', test:'Liver Function Test', time:'30 Jun · 09:55', inc:'₹25', status:'shared'},
+      {id:'TXN-9036', patient:'Priya Nair', test:'Lipid Profile', time:'30 Jun · 09:40', inc:'—', status:'pending'},
+      {id:'TXN-9035', patient:'Kavita Joshi', test:'Vitamin D, 25-Hydroxy', time:'30 Jun · 09:21', inc:'₹25', status:'shared'},
+      {id:'TXN-9034', patient:'Imran Sheikh', test:'Kidney Function Test', time:'30 Jun · 09:03', inc:'₹25', status:'shared'},
+    ];
+    const txns = rawTxns.map(t=>({
+      ...t,
+      incColor: t.inc==='—' ? 'var(--mb-text-3)' : 'var(--mb-success)',
+      badge: this.badge(t.status),
+    }));
+    return { chart:this.buildChart(), mix, txns };
+  }
+}
+</script>
+</body>
+</html>

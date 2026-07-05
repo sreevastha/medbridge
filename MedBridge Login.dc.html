@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mb-primary:#1456b8; --mb-primary-hover:#0e3f8f; --mb-primary-dark:#0e3a7a;
+    --mb-primary-bright:#2b7cd3; --mb-primary-tint:#eaf1fb; --mb-primary-tint-2:#dbe7f8;
+    --mb-teal:#0d9488; --mb-teal-tint:#e2f5f2;
+    --mb-ink:#15233b; --mb-text:#26344b; --mb-text-2:#5b6b82; --mb-text-3:#8a97a8;
+    --mb-border:#e2e8f0; --mb-border-strong:#cbd5e1;
+    --mb-surface:#ffffff; --mb-bg:#f6f8fb; --mb-bg-subtle:#eef2f7;
+    --mb-success:#1f8a5b; --mb-success-tint:#e6f4ee;
+    --mb-r-md:10px; --mb-r-lg:14px;
+    --mb-sh-card:0 1px 2px rgba(21,35,59,.04), 0 1px 3px rgba(21,35,59,.06);
+    --mb-sh-pop:0 18px 48px rgba(21,35,59,.12);
+    --mb-font:'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mb-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+</style>
+</helmet>
+<div style="width:1440px; height:900px; position:relative; font-family:var(--mb-font); color:var(--mb-text); background:var(--mb-bg); -webkit-font-smoothing:antialiased; overflow:hidden; display:flex; flex-direction:column;">
+
+  <!-- soft brand wash -->
+  <div style="position:absolute; inset:0; background:radial-gradient(900px 520px at 50% -8%, #eaf1fb 0%, rgba(234,241,251,0) 62%); pointer-events:none;"></div>
+
+  <!-- centered column -->
+  <div style="position:relative; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px;">
+
+    <!-- Logo + wordmark -->
+    <div style="display:flex; align-items:center; gap:13px; margin-bottom:30px;">
+      <div style="width:46px; height:46px; border-radius:12px; background:var(--mb-primary); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 16px rgba(20,86,184,.3);">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 15c2.6 0 2.6-6 5.2-6S11.8 15 14.4 15s2.6-6 5.2-6" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/><circle cx="12" cy="5.5" r="1.6" fill="#fff"/></svg>
+      </div>
+      <span style="font-size:26px; font-weight:700; color:var(--mb-ink); letter-spacing:-.01em;">MedBridge</span>
+    </div>
+
+    <!-- Card -->
+    <div style="width:432px; background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:18px; box-shadow:var(--mb-sh-pop); padding:40px 40px 36px;">
+
+      <h1 style="font-size:24px; font-weight:700; color:var(--mb-ink); margin:0 0 6px; text-align:center;">Log in to your lab</h1>
+      <p style="font-size:15px; color:var(--mb-text-2); margin:0 0 30px; text-align:center;">Sign in to register patients and manage reports.</p>
+
+      <!-- Username -->
+      <label style="display:block; font-size:13px; font-weight:600; color:var(--mb-text-2); margin-bottom:8px;">Username</label>
+      <div style="height:50px; border:1.5px solid var(--mb-border-strong); border-radius:10px; padding:0 14px; display:flex; align-items:center; gap:11px; margin-bottom:20px;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="#8a97a8" stroke-width="1.9"/><path d="M5 19c0-3.4 3.1-5.2 7-5.2s7 1.8 7 5.2" stroke="#8a97a8" stroke-width="1.9" stroke-linecap="round"/></svg>
+        <span style="font-size:16px; color:var(--mb-ink);">roshni.d</span>
+      </div>
+
+      <!-- Password -->
+      <label style="display:block; font-size:13px; font-weight:600; color:var(--mb-text-2); margin-bottom:8px;">Password</label>
+      <div style="height:50px; border:2px solid var(--mb-primary); border-radius:10px; padding:0 14px; display:flex; align-items:center; gap:11px; margin-bottom:10px; box-shadow:0 0 0 3px rgba(20,86,184,.14);">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2.2" stroke="#5b6b82" stroke-width="1.9"/><path d="M8 10V8a4 4 0 0 1 8 0v2" stroke="#5b6b82" stroke-width="1.9"/></svg>
+        <span style="flex:1; font-size:18px; letter-spacing:.18em; color:var(--mb-ink);">••••••••</span>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" style="cursor:pointer;"><path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" stroke="#8a97a8" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="#8a97a8" stroke-width="1.8"/></svg>
+      </div>
+
+      <!-- Forgot password -->
+      <div style="text-align:right; margin-bottom:26px;">
+        <a href="#" style="font-size:13.5px; font-weight:600; color:var(--mb-primary); text-decoration:none;">Forgot password?</a>
+      </div>
+
+      <!-- Primary action -->
+      <button style="width:100%; height:52px; background:var(--mb-primary); color:#fff; border:none; border-radius:11px; font-family:var(--mb-font); font-size:16px; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(20,86,184,.26); display:flex; align-items:center; justify-content:center; gap:9px;" onmouseover="this.style.background='var(--mb-primary-hover)'" onmouseout="this.style.background='var(--mb-primary)'">
+        Log in
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h13m0 0l-5-5m5 5l-5 5" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- ABDM trust line -->
+    <div style="display:flex; align-items:center; gap:9px; margin-top:24px; padding:8px 14px; border-radius:999px; background:var(--mb-surface); border:1px solid var(--mb-border);">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6l7-3z" stroke="#0d9488" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size:13px; color:var(--mb-text-2);">Securely connected to India&rsquo;s ABDM health network</span>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="position:relative; padding:0 0 26px; text-align:center;">
+    <div style="font-size:13px; color:var(--mb-text-3);">MedBridge · Sunrise Diagnostics, Pune &nbsp;·&nbsp; Need help? Contact your lab admin</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mb-primary:#1456b8; --mb-primary-hover:#0e3f8f; --mb-primary-dark:#0e3a7a;
+    --mb-primary-bright:#2b7cd3; --mb-primary-tint:#eaf1fb; --mb-primary-tint-2:#dbe7f8;
+    --mb-teal:#0d9488; --mb-teal-tint:#e2f5f2;
+    --mb-ink:#15233b; --mb-text:#26344b; --mb-text-2:#5b6b82; --mb-text-3:#8a97a8;
+    --mb-border:#e2e8f0; --mb-border-strong:#cbd5e1;
+    --mb-surface:#ffffff; --mb-bg:#f6f8fb; --mb-bg-subtle:#eef2f7;
+    --mb-success:#1f8a5b; --mb-success-tint:#e6f4ee;
+    --mb-warning:#b9770b; --mb-warning-tint:#fbf0dd;
+    --mb-danger:#c5392b; --mb-danger-tint:#fbeae8;
+    --mb-r-md:10px; --mb-r-lg:14px;
+    --mb-sh-card:0 1px 2px rgba(21,35,59,.04), 0 1px 3px rgba(21,35,59,.06);
+    --mb-sh-pop:0 12px 34px rgba(21,35,59,.16);
+    --mb-font:'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mb-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  @keyframes mb-spin{to{transform:rotate(360deg);}}
+  @keyframes mb-shimmer{0%{background-position:-420px 0;}100%{background-position:420px 0;}}
+  @keyframes mb-toastin{0%{opacity:0; transform:translateY(10px) scale(.98);}100%{opacity:1; transform:translateY(0) scale(1);}}
+  @keyframes mb-pulse{0%,100%{opacity:1;}50%{opacity:.45;}}
+  .mb-spinner{width:42px; height:42px; border-radius:50%; border:4px solid var(--mb-primary-tint-2); border-top-color:var(--mb-primary); animation:mb-spin .8s linear infinite;}
+  .mb-skel{background:linear-gradient(90deg, #eef2f7 0%, #f6f8fb 40%, #eef2f7 80%); background-size:840px 100%; animation:mb-shimmer 1.3s ease-in-out infinite; border-radius:6px;}
+  .mb-toast{animation:mb-toastin .35s cubic-bezier(.2,.8,.2,1) both;}
+</style>
+</helmet>
+<div style="min-height:100vh; font-family:var(--mb-font); background:var(--mb-bg); color:var(--mb-text); -webkit-font-smoothing:antialiased; padding:0 0 80px;">
+
+  <!-- masthead -->
+  <div style="background:linear-gradient(180deg,#fff 0%,#f6f8fb 100%); border-bottom:1px solid var(--mb-border); padding:44px 56px 36px;">
+    <div style="max-width:1080px; margin:0 auto;">
+      <div style="font-size:13px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--mb-primary); margin-bottom:8px;">Design system · Standard states</div>
+      <h1 style="font-size:30px; font-weight:700; color:var(--mb-ink); margin:0 0 10px; letter-spacing:-.02em;">States we reuse everywhere</h1>
+      <p style="font-size:17px; line-height:1.55; color:var(--mb-text-2); margin:0; max-width:640px;">Empty, loading, error, and success — consistent treatments so every screen behaves the same way when there&rsquo;s nothing yet, something&rsquo;s on its way, something broke, or something worked.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1080px; margin:0 auto; padding:44px 56px 0;">
+
+    <!-- ===== EMPTY ===== -->
+    <div style="margin-bottom:44px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <span style="font-size:13px; font-weight:700; font-family:var(--mb-mono); color:var(--mb-text-3);">01</span>
+        <h2 style="font-size:19px; font-weight:600; color:var(--mb-ink); margin:0;">Empty state</h2>
+        <span style="font-size:14px; color:var(--mb-text-3);">— nothing here yet; point to the one next action</span>
+      </div>
+      <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:16px; box-shadow:var(--mb-sh-card); padding:64px 40px; display:flex; flex-direction:column; align-items:center; text-align:center;">
+        <div style="width:120px; height:120px; border-radius:24px; background:var(--mb-primary-tint); display:flex; align-items:center; justify-content:center; margin-bottom:26px; position:relative;">
+          <svg width="58" height="58" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8.5" r="3.6" stroke="#1456b8" stroke-width="1.8"/><path d="M5 19c0-3.5 3.2-5.5 7-5.5s7 2 7 5.5" stroke="#1456b8" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div style="position:absolute; right:-8px; bottom:-8px; width:42px; height:42px; border-radius:50%; background:var(--mb-primary); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(20,86,184,.3); border:3px solid #fff;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        </div>
+        <h3 style="font-size:21px; font-weight:700; color:var(--mb-ink); margin:0 0 8px;">No patients yet</h3>
+        <p style="font-size:15.5px; line-height:1.6; color:var(--mb-text-2); margin:0 0 26px; max-width:380px;">Register your first patient to start capturing tests and sharing reports to their ABDM health record.</p>
+        <button style="height:50px; padding:0 26px; background:var(--mb-primary); color:#fff; border:none; border-radius:11px; font-family:var(--mb-font); font-size:15.5px; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(20,86,184,.26); display:flex; align-items:center; gap:9px;" onmouseover="this.style.background='var(--mb-primary-hover)'" onmouseout="this.style.background='var(--mb-primary)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg>Register patient</button>
+      </div>
+    </div>
+
+    <!-- ===== LOADING ===== -->
+    <div style="margin-bottom:44px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <span style="font-size:13px; font-weight:700; font-family:var(--mb-mono); color:var(--mb-text-3);">02</span>
+        <h2 style="font-size:19px; font-weight:600; color:var(--mb-ink); margin:0;">Loading state</h2>
+        <span style="font-size:14px; color:var(--mb-text-3);">— spinner for actions, skeletons for content</span>
+      </div>
+      <div style="display:grid; grid-template-columns:340px 1fr; gap:20px;">
+        <!-- spinner -->
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:16px; box-shadow:var(--mb-sh-card); padding:48px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+          <div class="mb-spinner" style="margin-bottom:20px;"></div>
+          <div style="font-size:16px; font-weight:600; color:var(--mb-ink); margin-bottom:5px;">Sharing to ABDM&hellip;</div>
+          <div style="font-size:13.5px; color:var(--mb-text-3);">This usually takes a few seconds</div>
+        </div>
+        <!-- skeleton rows -->
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:16px; box-shadow:var(--mb-sh-card); overflow:hidden;">
+          <div style="display:grid; grid-template-columns:2fr 2fr 1.3fr 1fr; padding:14px 24px; background:var(--mb-bg-subtle); border-bottom:1px solid var(--mb-border); font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--mb-text-2);"><div>Patient</div><div>Test</div><div>Status</div><div style="text-align:right;">Time</div></div>
+          <sc-for list="{{ skeletonRows }}" as="r" hint-placeholder-count="5">
+            <div style="display:grid; grid-template-columns:2fr 2fr 1.3fr 1fr; padding:18px 24px; border-bottom:1px solid var(--mb-border); align-items:center; gap:0;">
+              <div style="display:flex; align-items:center; gap:12px;"><div class="mb-skel" style="width:38px; height:38px; border-radius:50%;"></div><div style="flex:1;"><div class="mb-skel" style="height:11px; width:62%; margin-bottom:7px;"></div><div class="mb-skel" style="height:9px; width:38%;"></div></div></div>
+              <div style="padding-right:24px;"><div class="mb-skel" style="height:11px; width:80%;"></div></div>
+              <div style="padding-right:24px;"><div class="mb-skel" style="height:24px; width:90px; border-radius:999px;"></div></div>
+              <div style="display:flex; justify-content:flex-end;"><div class="mb-skel" style="height:11px; width:42px;"></div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ERROR ===== -->
+    <div style="margin-bottom:44px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <span style="font-size:13px; font-weight:700; font-family:var(--mb-mono); color:var(--mb-text-3);">03</span>
+        <h2 style="font-size:19px; font-weight:600; color:var(--mb-ink); margin:0;">Error state</h2>
+        <span style="font-size:14px; color:var(--mb-text-3);">— say what happened, offer a way forward</span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <!-- full-panel error -->
+        <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:16px; box-shadow:var(--mb-sh-card); padding:48px 36px; display:flex; flex-direction:column; align-items:center; text-align:center;">
+          <div style="width:84px; height:84px; border-radius:50%; background:var(--mb-danger-tint); display:flex; align-items:center; justify-content:center; margin-bottom:22px;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 3l9.5 16.5H2.5L12 3z" stroke="#c5392b" stroke-width="1.9" stroke-linejoin="round"/><path d="M12 10v4M12 17v.3" stroke="#c5392b" stroke-width="2.1" stroke-linecap="round"/></svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--mb-ink); margin:0 0 8px;">Couldn&rsquo;t share the report</h3>
+          <p style="font-size:15px; line-height:1.6; color:var(--mb-text-2); margin:0 0 24px; max-width:360px;">The ABDM network didn&rsquo;t respond. The report is saved &mdash; you can try sharing again.</p>
+          <div style="display:flex; gap:12px;">
+            <button style="height:48px; padding:0 24px; background:var(--mb-primary); color:#fff; border:none; border-radius:11px; font-family:var(--mb-font); font-size:15px; font-weight:600; cursor:pointer; box-shadow:0 4px 12px rgba(20,86,184,.26); display:flex; align-items:center; gap:9px;" onmouseover="this.style.background='var(--mb-primary-hover)'" onmouseout="this.style.background='var(--mb-primary)'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 1 2.3 5.6M4 12V7m0 5h5" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Retry sharing</button>
+            <button style="height:48px; padding:0 22px; background:#fff; color:var(--mb-text-2); border:1.5px solid var(--mb-border-strong); border-radius:11px; font-family:var(--mb-font); font-size:15px; font-weight:600; cursor:pointer;">Contact support</button>
+          </div>
+        </div>
+        <!-- inline error banner + field error -->
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="background:var(--mb-danger-tint); border:1px solid #f0c4be; border-radius:12px; padding:16px 18px; display:flex; gap:13px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex:none; margin-top:1px;"><circle cx="12" cy="12" r="9" stroke="#c5392b" stroke-width="1.9"/><path d="M12 7.5v5.5M12 16v.3" stroke="#c5392b" stroke-width="2" stroke-linecap="round"/></svg>
+            <div><div style="font-size:14.5px; font-weight:600; color:#9d2c20; margin-bottom:3px;">2 reports failed to share</div><div style="font-size:13.5px; line-height:1.5; color:#9d2c20;">Network error reaching ABDM. <a href="#" style="color:#9d2c20; font-weight:600;">Review &amp; retry &rarr;</a></div></div>
+          </div>
+          <div style="background:var(--mb-surface); border:1px solid var(--mb-border); border-radius:12px; padding:18px;">
+            <div style="font-size:12.5px; font-weight:600; color:var(--mb-text-2); margin-bottom:14px;">Inline field error</div>
+            <label style="display:block; font-size:13px; font-weight:600; color:var(--mb-text-2); margin-bottom:8px;">ABHA number</label>
+            <div style="height:48px; border:2px solid var(--mb-danger); border-radius:10px; padding:0 14px; display:flex; align-items:center; font-size:16px; font-family:var(--mb-mono); color:var(--mb-ink); background:#fff;">91-2345</div>
+            <div style="font-size:13px; color:var(--mb-danger); margin-top:8px; display:flex; align-items:center; gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#c5392b" stroke-width="2"/><path d="M12 7v6M12 16.5v.5" stroke="#c5392b" stroke-width="2" stroke-linecap="round"/></svg>Enter the full 14-digit ABHA number.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SUCCESS / TOAST ===== -->
+    <div style="margin-bottom:20px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <span style="font-size:13px; font-weight:700; font-family:var(--mb-mono); color:var(--mb-text-3);">04</span>
+        <h2 style="font-size:19px; font-weight:600; color:var(--mb-ink); margin:0;">Success notifications</h2>
+        <span style="font-size:14px; color:var(--mb-text-3);">— a toast confirms; bottom-right, auto-dismisses</span>
+      </div>
+
+      <!-- toast preview surface -->
+      <div style="position:relative; background:var(--mb-bg-subtle); border:1px solid var(--mb-border); border-radius:16px; height:280px; overflow:hidden; background-image:radial-gradient(var(--mb-border) 1px, transparent 1px); background-size:22px 22px;">
+        <div style="position:absolute; top:18px; left:20px; font-size:12.5px; color:var(--mb-text-3); font-weight:600;">App surface</div>
+
+        <!-- stacked toasts bottom-right -->
+        <div style="position:absolute; right:24px; bottom:22px; display:flex; flex-direction:column; gap:12px; width:380px;">
+          <!-- success toast -->
+          <div class="mb-toast" style="background:#fff; border:1px solid var(--mb-border); border-left:4px solid var(--mb-success); border-radius:12px; box-shadow:var(--mb-sh-pop); padding:15px 16px; display:flex; align-items:flex-start; gap:13px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:var(--mb-success-tint); display:flex; align-items:center; justify-content:center; flex:none;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 6.5" stroke="#1f8a5b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div style="flex:1; padding-top:1px;"><div style="font-size:14.5px; font-weight:600; color:var(--mb-ink); margin-bottom:2px;">Report shared to ABDM</div><div style="font-size:13px; color:var(--mb-text-2);">Anjali Deshpande&rsquo;s CBC is now in her health record.</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none; cursor:pointer; margin-top:2px;"><path d="M6 6l12 12M18 6L6 18" stroke="#8a97a8" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <!-- info/neutral toast -->
+          <div class="mb-toast" style="background:#fff; border:1px solid var(--mb-border); border-left:4px solid var(--mb-primary); border-radius:12px; box-shadow:var(--mb-sh-pop); padding:15px 16px; display:flex; align-items:flex-start; gap:13px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:var(--mb-primary-tint); display:flex; align-items:center; justify-content:center; flex:none;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 16v-5M12 8v.3" stroke="#1456b8" stroke-width="2.1" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#1456b8" stroke-width="1.8"/></svg></div>
+            <div style="flex:1; padding-top:1px;"><div style="font-size:14.5px; font-weight:600; color:var(--mb-ink); margin-bottom:2px;">Draft saved</div><div style="font-size:13px; color:var(--mb-text-2);">Your results are saved. Sign when ready.</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none; cursor:pointer; margin-top:2px;"><path d="M6 6l12 12M18 6L6 18" stroke="#8a97a8" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- inline success banner variant -->
+      <div style="margin-top:16px; background:var(--mb-success-tint); border:1px solid #bfe3cf; border-radius:12px; padding:15px 18px; display:flex; align-items:center; gap:13px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex:none;"><circle cx="12" cy="12" r="9" stroke="#1f8a5b" stroke-width="1.9"/><path d="M8 12l3 3 5-6" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-size:14.5px; color:#136b44;"><span style="font-weight:600;">Patient registered.</span> Anjali Deshpande is linked to her ABHA health ID and ready for orders.</div>
+        <a href="#" style="margin-left:auto; font-size:14px; font-weight:600; color:#136b44; text-decoration:none; white-space:nowrap;">Create order &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { skeletonRows: [1,2,3,4,5] };
+  }
+}
+</script>
+</body>
+</html>

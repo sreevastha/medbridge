@@ -1,0 +1,20 @@
+# Environment variables
+.env
+
+# Node.js dependencies
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Python dependencies
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+env/
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
