@@ -1,36 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --mb-primary: #1456b8; 
-  --mb-primary-hover: #0e3f8f; 
+  /* Brand */
+  --mb-primary: #1456b8;
+  --mb-primary-hover: #0e3f8f;
+  --mb-primary-press: #0b3270;
+  --mb-primary-bright: #2b7cd3;
   --mb-primary-dark: #0e3a7a;
-  --mb-primary-bright: #2b7cd3; 
-  --mb-primary-tint: #eaf1fb; 
+  --mb-primary-tint: #eaf1fb;
   --mb-primary-tint-2: #dbe7f8;
-  --mb-teal: #0d9488; 
+  --mb-teal: #0d9488;
   --mb-teal-tint: #e2f5f2;
-  --mb-ink: #15233b; 
-  --mb-text: #26344b; 
-  --mb-text-2: #5b6b82; 
+
+  /* Neutrals (cool, blue-leaning) */
+  --mb-ink: #15233b;
+  --mb-text: #26344b;
+  --mb-text-2: #5b6b82;
   --mb-text-3: #8a97a8;
-  --mb-border: #e2e8f0; 
+  --mb-border: #e2e8f0;
   --mb-border-strong: #cbd5e1;
-  --mb-surface: #ffffff; 
-  --mb-bg: #f6f8fb; 
+  --mb-surface: #ffffff;
+  --mb-bg: #f6f8fb;
   --mb-bg-subtle: #eef2f7;
-  --mb-success: #1f8a5b; 
+
+  /* Semantic */
+  --mb-success: #1f8a5b;
   --mb-success-tint: #e6f4ee;
-  --mb-warning: #b9770b; 
+  --mb-warning: #b9770b;
   --mb-warning-tint: #fbf0dd;
-  --mb-danger: #c5392b; 
+  --mb-danger: #c5392b;
   --mb-danger-tint: #fbeae8;
-  
-  --mb-r-md: 10px; 
+
+  /* Radius */
+  --mb-r-sm: 6px;
+  --mb-r-md: 10px;
   --mb-r-lg: 14px;
-  
+  --mb-r-pill: 999px;
+
+  /* Elevation */
   --mb-sh-card: 0 1px 2px rgba(21,35,59,.04), 0 1px 3px rgba(21,35,59,.06);
-  --mb-sh-pop: 0 18px 48px rgba(21,35,59,.12);
-  
+  --mb-sh-raised: 0 6px 18px rgba(21,35,59,.09);
+  --mb-sh-pop: 0 12px 34px rgba(21,35,59,.14);
+
   --mb-font: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --mb-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }

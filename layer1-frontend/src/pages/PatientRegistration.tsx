@@ -205,7 +205,7 @@ const PatientRegistration: React.FC = () => {
       {/* ===================== MAIN ===================== */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         
-        {/* Top bar */}
+        {/* Top bar - App Shell Spec */}
         <header style={{ height: '68px', flex: 'none', background: 'var(--mb-surface)', borderBottom: '1px solid var(--mb-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 28px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '34px', height: '34px', borderRadius: '9px', background: 'var(--mb-teal-tint)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -221,7 +221,18 @@ const PatientRegistration: React.FC = () => {
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-            <button onClick={handleLogout} style={{ height: '40px', padding: '0 16px', border: '1.5px solid var(--mb-border-strong)', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--mb-text-2)', cursor: 'pointer', background: 'none' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--mb-text-2)', cursor: 'pointer' }}>
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 4a5 5 0 0 0-5 5v3l-1.6 3h13.2L17 12V9a5 5 0 0 0-5-5z" stroke="#5b6b82" strokeWidth="1.9" strokeLinejoin="round"/><path d="M10 19a2 2 0 0 0 4 0" stroke="#5b6b82" strokeWidth="1.9" strokeLinecap="round"/></svg>
+            </div>
+            <div style={{ width: '1px', height: '28px', background: 'var(--mb-border)' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--mb-primary)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 700 }}>{labInfo.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}</div>
+              <div style={{ lineHeight: 1.2 }}>
+                <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--mb-ink)' }}>Admin</div>
+                <div style={{ fontSize: '12.5px', color: 'var(--mb-text-3)' }}>Lab owner</div>
+              </div>
+            </div>
+            <button onClick={handleLogout} style={{ height: '40px', padding: '0 16px', border: '1.5px solid var(--mb-border-strong)', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--mb-text-2)', cursor: 'pointer', background: 'transparent', fontFamily: 'var(--mb-font)' }}>
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
                 <path d="M15 5V4a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1" stroke="#5b6b82" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M10 12h10m0 0l-3-3m3 3l-3 3" stroke="#5b6b82" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
