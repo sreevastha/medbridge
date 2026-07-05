@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from sqlalchemy import select
+from sqlalchemy import select, text
 
 from app.core.config import settings
 from app.core.database import engine, SessionLocal
@@ -22,6 +22,13 @@ async def lifespan(app: FastAPI):
     # Create all tables on startup
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        # Add columns to patients if they do not exist (handles DB schema upgrades automatically)
+        for col, col_type in [("age", "INTEGER"), ("gender", "VARCHAR"), ("abha_id", "VARCHAR")]:
+            try:
+                await conn.execute(text(f"ALTER TABLE patients ADD COLUMN {col} {col_type}"))
+            except Exception:
+                pass
+
 
     # Seed data
     async with SessionLocal() as session:
