@@ -24,30 +24,26 @@ class TransactionResponse(BaseModel):
     incentive: Optional[float] = None
     created_at: str
 
+from sqlalchemy.orm import selectinload
+
 @router.get("")
 async def get_orders(current_user: Lab = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
     # Load transactions along with patient and test relations
     result = await db.execute(
         select(Transaction)
         .where(Transaction.lab_id == current_user.id)
+        .options(selectinload(Transaction.patient), selectinload(Transaction.test))
         .order_by(Transaction.created_at.desc())
     )
     txns = result.scalars().all()
     
     orders = []
     for t in txns:
-        # Load relations explicitly
-        pat_res = await db.execute(select(Patient).where(Patient.id == t.patient_id))
-        pat = pat_res.scalars().first()
-        
-        test_res = await db.execute(select(TestCatalogue).where(TestCatalogue.id == t.test_id))
-        test_val = test_res.scalars().first()
-        
         orders.append({
             "id": t.id,
             "txn_id_str": t.txn_id_str,
-            "patient_name": pat.name if pat else "Unknown Patient",
-            "test_name": test_val.name if test_val else "Unknown Test",
+            "patient_name": t.patient.name if t.patient else "Unknown Patient",
+            "test_name": t.test.name if t.test else "Unknown Test",
             "status": t.status,
             "incentive": t.incentive or 0.0,
             "created_at": t.created_at.strftime("%Y-%m-%d %H:%M") if t.created_at else ""

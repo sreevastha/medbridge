@@ -33,6 +33,26 @@ const initialAnalytes: Analyte[] = [
   { name: 'MCV', sub: 'Mean corpuscular volume', unit: 'fL', min: 80, max: 100, value: '78' },
 ];
 
+const getAnalytesForTest = (testName: string): Analyte[] => {
+  const t = testName.toLowerCase();
+  if (t.includes('lipid')) {
+    return [
+      { name: 'Total Cholesterol', sub: 'Serum', unit: 'mg/dL', min: 125, max: 200, value: '185' },
+      { name: 'Triglycerides', sub: 'Serum', unit: 'mg/dL', min: 40, max: 150, value: '130' },
+      { name: 'HDL Cholesterol', sub: 'Serum', unit: 'mg/dL', min: 40, max: 60, value: '45' },
+      { name: 'LDL Cholesterol', sub: 'Serum', unit: 'mg/dL', min: 0, max: 100, value: '114' },
+      { name: 'VLDL Cholesterol', sub: 'Serum', unit: 'mg/dL', min: 0, max: 30, value: '26' },
+    ];
+  } else if (t.includes('thyroid')) {
+    return [
+      { name: 'Total T3', sub: 'Serum', unit: 'ng/dL', min: 80, max: 200, value: '120' },
+      { name: 'Total T4', sub: 'Serum', unit: 'µg/dL', min: 4.5, max: 12.0, value: '7.2' },
+      { name: 'TSH', sub: 'Serum', unit: 'µIU/mL', min: 0.27, max: 4.20, value: '2.5' },
+    ];
+  }
+  return [...initialAnalytes];
+};
+
 const Reports: React.FC = () => {
   const navigate = useNavigate();
   const [reports, setReports] = useState<ReportItem[]>([]);
@@ -50,6 +70,12 @@ const Reports: React.FC = () => {
   const [uploadedPdf, setUploadedPdf] = useState<{ name: string; size: string; uploadedAt: string } | null>(null);
   const [uploadingPdf, setUploadingPdf] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+
+  useEffect(() => {
+    if (selectedReport) {
+      setAnalytes(getAnalytesForTest(selectedReport.test_name));
+    }
+  }, [selectedReport]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -582,13 +608,13 @@ const Reports: React.FC = () => {
                           <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M4 15c2.6 0 2.6-6 5.2-6S11.8 15 14.4 15s2.6-6 5.2-6" stroke="#fff" strokeWidth="2.1" strokeLinecap="round"/><circle cx="12" cy="5.5" r="1.6" fill="#fff"/></svg>
                         </div>
                         <div>
-                          <div style={{ fontSize: '22px', fontWeight: 700, color: 'var(--mb-ink)', letterSpacing: '-.01em' }}>Sunrise Diagnostics</div>
+                          <div style={{ fontSize: '22px', fontWeight: 700, color: 'var(--mb-ink)', letterSpacing: '-.01em' }}>{labInfo.name}</div>
                           <div style={{ fontSize: '13px', color: 'var(--mb-text-2)', marginTop: '3px' }}>Plot 14, FC Road, Pune 411004 · +91 20 4567 8900</div>
                         </div>
                       </div>
                       <div style={{ textAlign: 'right' }}>
                         <div style={{ fontSize: '13px', color: 'var(--mb-text-3)' }}>NABL accredited · MC-2241</div>
-                        <div style={{ fontSize: '13px', color: 'var(--mb-text-3)', marginTop: '3px' }}>HFR ID <span style={{ fontFamily: 'var(--mb-mono)' }}>4521-8890</span></div>
+                        <div style={{ fontSize: '13px', color: 'var(--mb-text-3)', marginTop: '3px' }}>HFR ID <span style={{ fontFamily: 'var(--mb-mono)' }}>{labInfo.hfr_id}</span></div>
                       </div>
                     </div>
                   </div>
@@ -603,7 +629,7 @@ const Reports: React.FC = () => {
                   {/* Report Title */}
                   <div style={{ padding: '22px 48px 8px', textAlign: 'center' }}>
                     <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--mb-ink)', letterSpacing: '.01em' }}>{selectedReport.test_name.toUpperCase()}</div>
-                    <div style={{ fontSize: '13px', color: 'var(--mb-text-3)', marginTop: '3px' }}>Haematology · Whole blood</div>
+                    <div style={{ fontSize: '13px', color: 'var(--mb-text-3)', marginTop: '3px' }}>Clinical Diagnostics</div>
                   </div>
 
                   {/* Results Table */}
@@ -635,7 +661,7 @@ const Reports: React.FC = () => {
                   <div style={{ padding: '8px 48px 4px' }}>
                     <div style={{ background: 'var(--mb-bg)', border: '1px solid var(--mb-border)', borderRadius: '8px', padding: '14px 16px' }}>
                       <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--mb-text-2)', marginBottom: '6px' }}>Impression</div>
-                      <div style={{ fontSize: '13.5px', lineHeight: 1.6, color: 'var(--mb-text)' }}>Mild anaemia with leucocytosis. Haemoglobin and PCV below reference; total WBC count mildly elevated. Suggest clinical correlation and repeat after treatment.</div>
+                      <div style={{ fontSize: '13.5px', lineHeight: 1.6, color: 'var(--mb-text)' }}>Results must be clinically correlated. Please consult your physician for medical advice and interpretation.</div>
                     </div>
                   </div>
 

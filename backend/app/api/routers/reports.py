@@ -10,32 +10,29 @@ from app.models.user import Lab
 
 router = APIRouter(prefix="/api/reports", tags=["reports"])
 
+from sqlalchemy.orm import selectinload
+
 @router.get("")
 async def get_reports(current_user: Lab = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
-    # Fetch pending transactions that need signature
+    # Fetch pending transactions that need signature with eagerly loaded relations
     result = await db.execute(
         select(Transaction)
         .where(Transaction.lab_id == current_user.id)
+        .options(selectinload(Transaction.patient), selectinload(Transaction.test))
         .order_by(Transaction.created_at.desc())
     )
     txns = result.scalars().all()
     
     reports = []
     for t in txns:
-        pat_res = await db.execute(select(Patient).where(Patient.id == t.patient_id))
-        pat = pat_res.scalars().first()
-        
-        test_res = await db.execute(select(TestCatalogue).where(TestCatalogue.id == t.test_id))
-        test_val = test_res.scalars().first()
-        
         reports.append({
             "id": t.id,
             "txn_id_str": t.txn_id_str,
-            "patient_name": pat.name if pat else "Unknown",
-            "patient_age": pat.age if pat else 0,
-            "patient_gender": pat.gender if pat else "Unknown",
-            "patient_abha": pat.abha_id if pat else "",
-            "test_name": test_val.name if test_val else "Unknown",
+            "patient_name": t.patient.name if t.patient else "Unknown",
+            "patient_age": t.patient.age if t.patient else 0,
+            "patient_gender": t.patient.gender if t.patient else "Unknown",
+            "patient_abha": t.patient.abha_id if t.patient else "",
+            "test_name": t.test.name if t.test else "Unknown",
             "status": t.status,
             "created_at": t.created_at.strftime("%Y-%m-%d %H:%M") if t.created_at else ""
         })
